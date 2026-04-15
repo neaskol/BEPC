@@ -1,101 +1,99 @@
-import Image from "next/image";
+import Link from "next/link";
+import { BookOpen, Zap, Trophy, WifiOff } from "lucide-react";
 
-export default function Home() {
+export default function LandingPage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="flex flex-col min-h-screen bg-white">
+      {/* Header */}
+      <header className="bg-bepc-vert px-6 pt-12 pb-8 text-white">
+        <h1 className="text-[22px] font-medium leading-tight">
+          BEPC Mada
+        </h1>
+        <p className="mt-1 text-bepc-vert-clair text-corps-sm opacity-90">
+          Prépare ton BEPC, à ton rythme
+        </p>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Hero */}
+      <section className="px-6 py-8 flex-1">
+        <h2 className="text-titre-lg font-medium text-gray-900 leading-snug">
+          Réussis ton BEPC,<br />
+          même si tu as décroché.
+        </h2>
+        <p className="mt-3 text-corps text-bepc-gris leading-relaxed">
+          Des cours adaptés, des exercices avec corrections bienveillantes,
+          et un suivi de ta progression — conçu pour les élèves malgaches.
+        </p>
+
+        {/* CTAs */}
+        <div className="mt-8 flex flex-col gap-3">
+          <Link
+            href="/auth/inscription"
+            className="flex items-center justify-center min-h-touch bg-bepc-vert text-white font-medium rounded-2xl px-6 py-3 text-corps transition-opacity active:opacity-80"
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Commencer gratuitement
+          </Link>
+          <Link
+            href="/auth/connexion"
+            className="flex items-center justify-center min-h-touch border-2 border-bepc-vert text-bepc-vert font-medium rounded-2xl px-6 py-3 text-corps transition-colors active:bg-bepc-vert-clair"
           >
-            Read our docs
-          </a>
+            J&apos;ai déjà un compte
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+        {/* Features */}
+        <ul className="mt-10 flex flex-col gap-5">
+          <li className="flex items-start gap-4">
+            <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-bepc-vert-clair flex items-center justify-center">
+              <BookOpen size={20} className="text-bepc-vert" />
+            </span>
+            <div>
+              <p className="font-medium text-corps text-gray-900">Cours générés par l&apos;IA</p>
+              <p className="text-corps-sm text-bepc-gris mt-0.5">
+                Maths, Français, SVT, Histoire-Géo, Physique et Anglais — avec des exemples malgaches.
+              </p>
+            </div>
+          </li>
+          <li className="flex items-start gap-4">
+            <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-bepc-ambre-clair flex items-center justify-center">
+              <Zap size={20} className="text-bepc-ambre" />
+            </span>
+            <div>
+              <p className="font-medium text-corps text-gray-900">Entraînements adaptés</p>
+              <p className="text-corps-sm text-bepc-gris mt-0.5">
+                Exercices corrigés avec encouragements — jamais de &quot;mauvaise réponse&quot;.
+              </p>
+            </div>
+          </li>
+          <li className="flex items-start gap-4">
+            <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-bepc-vert-clair flex items-center justify-center">
+              <Trophy size={20} className="text-bepc-vert" />
+            </span>
+            <div>
+              <p className="font-medium text-corps text-gray-900">Progression & badges</p>
+              <p className="text-corps-sm text-bepc-gris mt-0.5">
+                XP, niveaux et badges aux noms malgaches pour te motiver chaque jour.
+              </p>
+            </div>
+          </li>
+          <li className="flex items-start gap-4">
+            <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center">
+              <WifiOff size={20} className="text-bepc-gris" />
+            </span>
+            <div>
+              <p className="font-medium text-corps text-gray-900">Fonctionne hors-ligne</p>
+              <p className="text-corps-sm text-bepc-gris mt-0.5">
+                Révise même sans connexion. Tes réponses se synchronisent automatiquement.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      {/* Footer */}
+      <footer className="px-6 py-6 text-center text-corps-sm text-bepc-gris border-t border-gray-100">
+        Conçu pour les élèves malgaches · BEPC Mada 2026
       </footer>
-    </div>
+    </main>
   );
 }

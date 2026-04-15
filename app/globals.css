@@ -4,24 +4,37 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
+  --font-inter: "Inter", system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: var(--font-inter);
+    /* Empêche le zoom sur focus des inputs sur iOS */
+    -webkit-text-size-adjust: 100%;
   }
-}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Supprime le tap highlight sur mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Padding pour éviter que le contenu soit caché derrière la BottomNav */
+  .pb-nav {
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom));
   }
 }
