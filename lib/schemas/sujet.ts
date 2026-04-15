@@ -38,12 +38,12 @@ export type MatiereCode = z.infer<typeof MatiereCodeSchema>;
 export type ExerciceExtract = z.infer<typeof ExerciceExtractSchema>;
 export type SujetExtract = z.infer<typeof SujetExtractSchema>;
 
-// IDs fixes des matières (définis dans seed.sql)
+// IDs fixes des matières (définis dans 0009_matieres_seed.sql)
 export const MATIERE_ID_BY_CODE: Record<MatiereCode, string> = {
-  maths: "11111111-0001-0001-0001-000000000001",
-  francais: "11111111-0001-0001-0001-000000000002",
-  svt: "11111111-0001-0001-0001-000000000003",
-  histoire_geo: "11111111-0001-0001-0001-000000000004",
-  physique: "11111111-0001-0001-0001-000000000005",
-  anglais: "11111111-0001-0001-0001-000000000006",
+  maths:       "a1b2c3d4-0001-0000-0000-000000000001",
+  francais:    "a1b2c3d4-0001-0000-0000-000000000002",
+  svt:         "a1b2c3d4-0001-0000-0000-000000000003",
+  histoire_geo:"a1b2c3d4-0001-0000-0000-000000000004",
+  physique:    "a1b2c3d4-0001-0000-0000-000000000005",
+  anglais:     "a1b2c3d4-0001-0000-0000-000000000006",
 };
