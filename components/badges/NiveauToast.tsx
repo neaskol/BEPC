@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { NIVEAUX } from "@/lib/actions/xp";
+import { NIVEAUX } from "@/lib/constants/xp";
 
 interface NiveauToastProps {
   niveauApres: number;
