@@ -5,6 +5,7 @@ import { seDeconnecter } from "@/app/auth/actions";
 import { BottomNav } from "@/components/ui/BottomNav";
 import { JaugeBEPC } from "@/components/dashboard/JaugeBEPC";
 import { DashboardClient } from "./DashboardClient";
+import { PenLine, BookOpen, CreditCard, Award, Flame, ChevronRight } from "lucide-react";
 
 // Date BEPC malgache approximative : dernier jeudi de juin (J-juin de l'année courante)
 function joursAvantBepc(): number {
@@ -66,110 +67,129 @@ export default async function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
-      {/* Header */}
-      <header className="bg-bepc-vert px-4 pt-10 pb-6">
+      {/* Header — gradient */}
+      <header className="bg-bepc-header px-4 pt-10 pb-6">
         <div className="max-w-sm mx-auto">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <p className="text-white/70 text-sm">Bonjour,</p>
-              <h1 className="text-titre-xl font-medium text-white">
-                {profile.prenom}
+              <p className="text-white/70 text-[13px]">Bonjour,</p>
+              <h1 className="font-display text-[24px] font-extrabold text-white leading-tight">
+                {profile.prenom} 👋
               </h1>
             </div>
-            <div className="flex items-center gap-3">
-              {/* SyncIndicator + usePreload (côté client) */}
+            <div className="flex items-center gap-2">
               <DashboardClient />
               <form action={seDeconnecter}>
                 <button
                   type="submit"
-                  className="text-white/70 text-xs hover:text-white transition-colors min-h-touch px-2 flex items-center"
+                  className="text-white/60 text-xs hover:text-white transition-colors
+                             min-h-touch px-2 flex items-center"
                 >
-                  Déconnexion
+                  Déco.
                 </button>
               </form>
             </div>
           </div>
 
           {/* XP Bar */}
-          <div className="bg-white/10 rounded-xl p-3">
+          <div className="bg-white/15 backdrop-blur-sm border border-white/20 rounded-2xl p-3.5">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-white font-semibold text-sm">
-                Niveau {niveau}
-              </span>
-              <span className="text-white/70 text-xs">
-                {profile.xp_total ?? 0} XP total
+              <div className="flex items-center gap-1.5">
+                <span className="bg-yellow-300 text-yellow-900 text-[10px] font-bold
+                                 px-2 py-0.5 rounded-full uppercase tracking-wide">
+                  Niv. {niveau}
+                </span>
+                <span className="text-white font-semibold text-sm">
+                  {profile.xp_total ?? 0} XP
+                </span>
+              </div>
+              <span className="text-white/60 text-xs">
+                {xpPct}% vers niv. {niveau + 1}
               </span>
             </div>
-            <div className="h-2 bg-white/20 rounded-full overflow-hidden">
+            <div className="h-2.5 bg-white/20 rounded-full overflow-hidden">
               <div
-                className="h-full bg-white rounded-full transition-all"
+                className="h-full bg-white rounded-full transition-all duration-700"
                 style={{ width: `${xpPct}%` }}
               />
             </div>
-            <p className="text-white/70 text-xs mt-1.5">
-              {xpActuel} / {xpPalier} XP pour le niveau {niveau + 1}
+            <p className="text-white/50 text-[11px] mt-1.5">
+              {xpActuel} / {xpPalier} XP pour le prochain niveau
             </p>
           </div>
         </div>
       </header>
 
-      <main className="max-w-sm mx-auto px-4 pt-6 space-y-6">
+      <main className="max-w-sm mx-auto px-4 pt-5 space-y-5">
         {/* Streak */}
         {(profile.streak_actuel ?? 0) > 0 && (
-          <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 flex items-center gap-3">
-            <span className="text-2xl">🔥</span>
-            <div>
-              <p className="font-semibold text-orange-800 text-sm">
+          <div className="bg-card-streak border border-orange-200 rounded-2xl p-4
+                          flex items-center gap-3 shadow-card">
+            <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
+              <Flame size={20} className="text-orange-500" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="font-display font-bold text-orange-800 text-sm">
                 {profile.streak_actuel} jour
                 {(profile.streak_actuel ?? 0) > 1 ? "s" : ""} de suite !
               </p>
               <p className="text-orange-600 text-xs">Continue comme ça !</p>
             </div>
+            <ChevronRight size={16} className="text-orange-400 flex-shrink-0" />
           </div>
         )}
 
-        {/* Jauge BEPC — composant Phase 5 */}
+        {/* Jauge BEPC */}
         <section>
           <JaugeBEPC progressions={progressions} joursAvantBepc={jours} />
         </section>
 
         {/* Actions rapides */}
         <section>
-          <h2 className="text-base font-semibold text-gray-800 mb-3">
+          <h2 className="font-display text-[15px] font-bold text-gray-500 uppercase tracking-wide mb-3">
             Que veux-tu faire ?
           </h2>
           <div className="grid grid-cols-2 gap-3">
+            {/* Primary CTA — full color */}
             <a
               href="/entrainement"
-              className="bg-bepc-vert text-white rounded-xl p-4 flex flex-col gap-2
-                         active:scale-95 transition-transform"
+              className="bg-bepc-vert text-white rounded-2xl p-4 flex flex-col gap-2.5
+                         active:scale-95 transition-transform shadow-green-glow"
             >
-              <span className="text-2xl">✏️</span>
-              <span className="text-sm font-semibold">S&apos;entraîner</span>
+              <div className="w-9 h-9 bg-white/20 rounded-xl flex items-center justify-center">
+                <PenLine size={18} className="text-white" />
+              </div>
+              <span className="text-sm font-bold leading-tight">S&apos;entraîner</span>
             </a>
+
             <a
               href="/cours"
-              className="bg-white text-gray-800 rounded-xl p-4 flex flex-col gap-2
-                         shadow-sm active:scale-95 transition-transform border border-gray-100"
+              className="card p-4 flex flex-col gap-2.5 active:scale-95 transition-transform"
             >
-              <span className="text-2xl">📖</span>
-              <span className="text-sm font-semibold">Voir les cours</span>
+              <div className="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center">
+                <BookOpen size={18} className="text-blue-600" />
+              </div>
+              <span className="text-sm font-bold text-gray-800 leading-tight">Voir les cours</span>
             </a>
+
             <a
               href="/flashcards"
-              className="bg-white text-gray-800 rounded-xl p-4 flex flex-col gap-2
-                         shadow-sm active:scale-95 transition-transform border border-gray-100"
+              className="card p-4 flex flex-col gap-2.5 active:scale-95 transition-transform"
             >
-              <span className="text-2xl">🃏</span>
-              <span className="text-sm font-semibold">Flashcards</span>
+              <div className="w-9 h-9 bg-purple-50 rounded-xl flex items-center justify-center">
+                <CreditCard size={18} className="text-purple-600" />
+              </div>
+              <span className="text-sm font-bold text-gray-800 leading-tight">Flashcards</span>
             </a>
+
             <a
               href="/badges"
-              className="bg-white text-gray-800 rounded-xl p-4 flex flex-col gap-2
-                         shadow-sm active:scale-95 transition-transform border border-gray-100"
+              className="card p-4 flex flex-col gap-2.5 active:scale-95 transition-transform"
             >
-              <span className="text-2xl">🏅</span>
-              <span className="text-sm font-semibold">Mes badges</span>
+              <div className="w-9 h-9 bg-yellow-50 rounded-xl flex items-center justify-center">
+                <Award size={18} className="text-yellow-600" />
+              </div>
+              <span className="text-sm font-bold text-gray-800 leading-tight">Mes badges</span>
             </a>
           </div>
         </section>

@@ -6,6 +6,7 @@
   --background: #ffffff;
   --foreground: #1a1a1a;
   --font-inter: "Inter", system-ui, sans-serif;
+  --font-nunito: "Nunito", system-ui, sans-serif;
 }
 
 @layer base {
@@ -13,18 +14,46 @@
     color: var(--foreground);
     background: var(--background);
     font-family: var(--font-inter);
-    /* Empêche le zoom sur focus des inputs sur iOS */
     -webkit-text-size-adjust: 100%;
   }
 
-  /* Supprime le tap highlight sur mobile */
   * {
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* Smooth scroll */
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Headings use Nunito for a friendly educational feel */
+  h1, h2, h3 {
+    font-family: var(--font-nunito), system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Card base — consistent shadow + radius */
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-gray-100;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply flex items-center justify-center min-h-touch bg-bepc-vert text-white font-semibold
+           rounded-2xl px-6 py-3 text-corps transition-all duration-150
+           active:scale-95 active:opacity-90 shadow-green-glow;
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply flex items-center justify-center min-h-touch border-2 border-bepc-vert
+           text-bepc-vert font-semibold rounded-2xl px-6 py-3 text-corps
+           transition-all duration-150 active:scale-95 active:bg-bepc-vert-clair;
+  }
+
+  /* Page header gradient */
+  .page-header {
+    @apply bg-bepc-header text-white;
   }
 }
 
@@ -36,5 +65,14 @@
   /* Padding pour éviter que le contenu soit caché derrière la BottomNav */
   .pb-nav {
     padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+  }
+
+  /* Respect reduced-motion for all animations */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }

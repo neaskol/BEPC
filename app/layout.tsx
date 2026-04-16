@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Nunito } from "next/font/google";
 import "./globals.css";
 import { OfflineBanner } from "@/components/ui/OfflineBanner";
 import { SyncProvider } from "@/components/ui/SyncProvider";
@@ -7,6 +7,13 @@ import { SyncProvider } from "@/components/ui/SyncProvider";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  variable: "--font-nunito",
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -29,8 +36,6 @@ export const viewport: Viewport = {
   themeColor: "#639922",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };
 
 export default function RootLayout({
@@ -40,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${inter.variable} font-sans antialiased bg-white text-gray-900`}>
+      <body className={`${inter.variable} ${nunito.variable} font-sans antialiased bg-white text-gray-900`}>
         <SyncProvider>
           <OfflineBanner />
           {children}
