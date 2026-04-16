@@ -9,7 +9,7 @@ import { anthropic, MODEL } from "@/lib/anthropic";
 import { addXP, checkAndAwardBadges } from "@/lib/actions/xp";
 
 // ── Coefficients officiels BEPC Madagascar ───────────────────────────────────
-export const MATIERES_BEPC = [
+const MATIERES_BEPC = [
   { code: "maths", nom: "Mathématiques", coeff: 4, duree_min: 180 },
   { code: "francais", nom: "Français", coeff: 4, duree_min: 120 },
   { code: "hist_geo", nom: "Histoire-Géographie", coeff: 3, duree_min: 120 },
