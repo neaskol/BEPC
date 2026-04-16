@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { CheckCircle } from "lucide-react";
-import { MiniQuiz } from "./MiniQuiz";
+import { MiniQuizXP } from "./MiniQuizXP";
 import type { Cours } from "@/app/cours/actions";
 import type { CoursContent } from "@/lib/ai/generateCours";
 
@@ -146,7 +146,7 @@ export function CourseReader({ cours }: Props) {
         const quiz = section.quiz_section;
         if (!quiz) return null;
         return (
-          <MiniQuiz
+          <MiniQuizXP
             quiz={quiz}
             onComplete={() => advanceFromQuiz(phase.index)}
           />
@@ -161,7 +161,7 @@ export function CourseReader({ cours }: Props) {
             <div className="bg-bepc-vert text-white rounded-2xl px-5 py-3 text-sm font-semibold">
               Quiz final — Question {phase.questionIndex + 1}/{quizFinal.length}
             </div>
-            <MiniQuiz
+            <MiniQuizXP
               quiz={q}
               onComplete={() => advanceQuizFinal(phase.questionIndex)}
             />

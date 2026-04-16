@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getUser } from "@/lib/auth/getUser";
 import { createClient } from "@/lib/supabase/server";
 import OnboardingClient from "@/components/onboarding/OnboardingClient";
+
+export const metadata: Metadata = {
+  title: "Bienvenue — BEPC Mada",
+  description: "Configure ton profil et commence ta préparation au BEPC.",
+};
 
 export default async function OnboardingPage() {
   const user = await getUser();

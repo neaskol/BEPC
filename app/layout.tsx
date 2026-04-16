@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { OfflineBanner } from "@/components/ui/OfflineBanner";
+import { SyncProvider } from "@/components/ui/SyncProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,8 +41,10 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={`${inter.variable} font-sans antialiased bg-white text-gray-900`}>
-        <OfflineBanner />
-        {children}
+        <SyncProvider>
+          <OfflineBanner />
+          {children}
+        </SyncProvider>
       </body>
     </html>
   );

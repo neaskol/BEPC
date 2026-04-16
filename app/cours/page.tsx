@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import {
@@ -13,6 +14,11 @@ import { BottomNav } from "@/components/ui/BottomNav";
 import { OfflineBanner } from "@/components/ui/OfflineBanner";
 import { getMatieres } from "./actions";
 import type { Matiere } from "./actions";
+
+export const metadata: Metadata = {
+  title: "Cours — BEPC Mada",
+  description: "Bibliothèque de cours par matière pour préparer le BEPC. Maths, Français, SVT, Histoire-Géo, Physique, Anglais.",
+};
 
 const ICONS: Record<string, React.ElementType> = {
   maths: Calculator,
