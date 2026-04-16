@@ -51,10 +51,10 @@ export default function RapportClient({ rapport, prenom }: Props) {
                 <RefreshCw size={28} className="text-[#639922] animate-spin" />
               </div>
               <h1 className="text-lg font-semibold text-gray-800 mb-2">
-                L'IA prépare ton rapport...
+                L&apos;IA prépare ton rapport...
               </h1>
               <p className="text-sm text-gray-500">
-                L'IA est lente, on réessaie... Rafraîchis la page dans quelques instants.
+                L&apos;IA est lente, on réessaie... Rafraîchis la page dans quelques instants.
               </p>
             </>
           ) : (
@@ -66,7 +66,7 @@ export default function RapportClient({ rapport, prenom }: Props) {
                 Rapport partiellement disponible
               </h1>
               <p className="text-sm text-gray-500 mb-4">
-                La connexion est instable, le rapport IA complet n'a pas pu être généré. Tes résultats sont bien sauvegardés.
+                La connexion est instable, le rapport IA complet n&apos;a pas pu être généré. Tes résultats sont bien sauvegardés.
               </p>
               <div className="bg-gray-50 rounded-xl p-3 mb-4">
                 <p className="text-sm text-gray-600">
@@ -100,7 +100,7 @@ export default function RapportClient({ rapport, prenom }: Props) {
     <div className="min-h-screen bg-gray-50 pb-8">
       {/* Header */}
       <div className="bg-[#639922] text-white px-4 pt-12 pb-8">
-        <h1 className="text-xl font-semibold mb-1">Ton rapport d'examen</h1>
+        <h1 className="text-xl font-semibold mb-1">Ton rapport d&apos;examen</h1>
         <p className="text-green-100 text-sm">
           {new Date(rapport.created_at).toLocaleDateString("fr-FR", {
             day: "numeric",
@@ -123,7 +123,7 @@ export default function RapportClient({ rapport, prenom }: Props) {
                   Un message pour toi, {prenom}
                 </p>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  {prenom}, ce score ne te définit pas. Tu as eu le courage de faire cet examen — c'est déjà une victoire.
+                  {prenom}, ce score ne te définit pas. Tu as eu le courage de faire cet examen — c&apos;est déjà une victoire.
                   On a analysé tes réponses et on a un plan pour toi. Ensemble, on va progresser. Tu es capable.
                 </p>
               </div>
@@ -155,7 +155,7 @@ export default function RapportClient({ rapport, prenom }: Props) {
             {rapportIA.appreciation && (
               <div className="mt-3 pt-3 border-t border-gray-50">
                 <p className="text-sm text-gray-600 italic leading-relaxed">
-                  "{rapportIA.appreciation}"
+                  &quot;{rapportIA.appreciation}&quot;
                 </p>
               </div>
             )}
@@ -282,7 +282,7 @@ export default function RapportClient({ rapport, prenom }: Props) {
         <div className="bg-white rounded-2xl p-4 shadow-sm text-center">
           <p className="text-xs text-gray-500 mb-1">Tu as gagné</p>
           <p className="text-2xl font-bold text-[#639922]">+100 XP</p>
-          <p className="text-xs text-gray-400 mt-1">pour avoir terminé l'examen blanc</p>
+          <p className="text-xs text-gray-400 mt-1">pour avoir terminé l&apos;examen blanc</p>
         </div>
 
         {/* === Actions === */}

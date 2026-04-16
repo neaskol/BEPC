@@ -5,7 +5,7 @@ import { addXP, checkAndAwardBadges } from "@/lib/actions/xp";
 
 // GET /api/communaute/questions/[id]/answers
 export async function GET(
-  _req: NextRequest,
+  _request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   const user = await getUser();
@@ -75,11 +75,6 @@ export async function POST(
   await addXP(user.id, 25, "Réponse dans la communauté");
 
   // Vérifier badge aide_communaute (5 réponses)
-  const { count: nbReponses } = await supabase
-    .from("community_answers")
-    .select("id", { count: "exact", head: true })
-    .eq("author_id", user.id);
-
   const nouveauxBadges = await checkAndAwardBadges(user.id);
 
   return NextResponse.json({ answer, xpGagne: 25, nouveauxBadges }, { status: 201 });

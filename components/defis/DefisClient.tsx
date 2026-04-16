@@ -38,7 +38,7 @@ function getPersonne(p: Personne | Personne[] | null): Personne | null {
   return Array.isArray(p) ? (p[0] ?? null) : p;
 }
 
-async function partagerViaWhatsApp(prenom: string, adversairePrenom: string) {
+async function partagerViaWhatsApp(prenom: string, _adversairePrenom: string) {
   const appUrl = typeof window !== "undefined"
     ? window.location.origin
     : "https://bepc-mada.vercel.app";

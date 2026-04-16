@@ -23,7 +23,7 @@ interface Props {
   monProfil: ElEveRang & { prenom: string };
 }
 
-const NIVEAUX_NOMS = ["", "Lycéen", "Étudiant", "Apprenti", "Chercheur", "Expert", "Lauréat", "Champion BEPC"];
+const _NIVEAUX_NOMS = ["", "Lycéen", "Étudiant", "Apprenti", "Chercheur", "Expert", "Lauréat", "Champion BEPC"];
 
 export function ClassementClient({
   voisins,

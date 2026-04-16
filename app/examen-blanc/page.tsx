@@ -19,15 +19,6 @@ const DUREE_TOTALE_SEC = MATIERES.reduce((sum, m) => sum + m.duree_min * 60, 0);
 
 type MatiereCode = (typeof MATIERES)[number]["code"];
 
-interface ReponseMatiere {
-  matiere_code: MatiereCode;
-  note: number;
-  reponses: {
-    enonce: string;
-    reponse_eleve: string;
-  }[];
-}
-
 type Phase = "intro" | "exam" | "submit" | "done";
 
 function formatTemps(sec: number): string {
@@ -192,7 +183,7 @@ export default function ExamenBlancPage() {
             Connexion requise
           </h1>
           <p className="text-sm text-gray-600 leading-relaxed">
-            L'examen blanc nécessite une connexion internet pour générer ton rapport personnalisé.
+            L&apos;examen blanc nécessite une connexion internet pour générer ton rapport personnalisé.
           </p>
         </div>
       </div>
@@ -280,9 +271,9 @@ export default function ExamenBlancPage() {
             <div className="flex gap-3">
               <AlertCircle size={18} className="text-amber-600 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="text-sm font-medium text-amber-800 mb-1">Règles de l'examen</p>
+                <p className="text-sm font-medium text-amber-800 mb-1">Règles de l&apos;examen</p>
                 <ul className="text-xs text-amber-700 space-y-1">
-                  <li>• Pas d'aide IA pendant la session</li>
+                  <li>• Pas d&apos;aide IA pendant la session</li>
                   <li>• Pas de correction immédiate</li>
                   <li>• Le rapport IA sera généré à la fin</li>
                   <li>• Disponible une fois par semaine</li>
@@ -299,7 +290,7 @@ export default function ExamenBlancPage() {
             onClick={demarrerExamen}
             className="w-full bg-[#639922] text-white rounded-2xl py-4 text-base font-semibold"
           >
-            Commencer l'examen
+            Commencer l&apos;examen
           </button>
         </div>
       </div>
@@ -438,7 +429,7 @@ export default function ExamenBlancPage() {
               {isSubmitting ? (
                 <span className="flex items-center justify-center gap-2">
                   <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  L'IA prépare ton rapport...
+                  L&apos;IA prépare ton rapport...
                 </span>
               ) : (
                 "Terminer et voir mon rapport"
