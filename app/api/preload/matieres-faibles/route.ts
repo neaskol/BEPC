@@ -3,6 +3,7 @@
  * Retourne les IDs des matières les plus faibles (niveau_pct le plus bas).
  * Utilisé par usePreload() pour pré-charger les cours et exercices correspondants.
  */
+export const dynamic = "force-dynamic";
 
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";

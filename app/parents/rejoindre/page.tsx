@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
-export default function ParentsRejoindre() {
+function ParentsRejoindreInner() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const enfantId = searchParams.get("enfant");
@@ -101,5 +101,17 @@ export default function ParentsRejoindre() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function ParentsRejoindre() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-[#639922] border-t-transparent rounded-full animate-spin" />
+      </div>
+    }>
+      <ParentsRejoindreInner />
+    </Suspense>
   );
 }

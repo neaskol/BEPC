@@ -3,6 +3,7 @@
  * Retourne les 30 exercices les plus récents (ou non tentés).
  * Utilisé par usePreload() pour les avoir disponibles hors-ligne.
  */
+export const dynamic = "force-dynamic";
 
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
