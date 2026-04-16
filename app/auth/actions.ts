@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createAdminClient } from "@/lib/supabase/server";
 import { inscriptionSchema, connexionSchema } from "@/lib/schemas/auth";
 
 type ActionState = { error: string } | null;
@@ -46,8 +46,10 @@ export async function inscrire(
     };
   }
 
-  // Créer le profil (RLS : auth.uid() = id autorisé via migration 0007)
-  const { error: profileError } = await supabase.from("profiles").insert({
+  // Créer le profil via le client admin (bypass RLS) — la session n'est pas
+  // encore établie après signUp si la confirmation email est activée
+  const adminClient = createAdminClient();
+  const { error: profileError } = await adminClient.from("profiles").insert({
     id: data.user.id,
     prenom: result.data.prenom,
     ville: result.data.ville ?? null,
